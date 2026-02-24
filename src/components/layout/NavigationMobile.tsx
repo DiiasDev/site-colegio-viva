@@ -130,6 +130,7 @@ export function NavigationMobile() {
   }, []);
 
   const activeHref = useMemo(() => {
+    if (!pathname) return "/#inicio";
     if (pathname.startsWith("/class")) return "/#turmas";
     if (pathname === "/colegio-viva") return "/colegio-viva";
     if (pathname === "/" && HOME_HASHES.includes(currentHash as HashTarget)) {
