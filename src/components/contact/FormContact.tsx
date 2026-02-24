@@ -25,21 +25,25 @@ export default function FormContact() {
     const autorizacao = formData.get("autorizacao") ? "Sim" : "Não";
 
     const texto = [
-      "Olá, Colégio Vivá! Gostaria de atendimento.",
+      "Olá, Colégio Vivá! 👋",
+      "Gostaria de atendimento sobre matrícula/visita.",
       "",
-      "*Dados do responsável*",
-      `Nome: ${nome || "-"}`,
-      `Telefone/WhatsApp: ${telefone || "-"}`,
-      `E-mail: ${email || "-"}`,
+      "📋 *Dados do responsável*",
+      `• Nome: ${nome || "-"}`,
+      `• Telefone/WhatsApp: ${telefone || "-"}`,
+      `• E-mail: ${email || "Não informado"}`,
       "",
-      "*Interesse*",
-      `Segmento: ${segmento || "-"}`,
-      `Assunto: ${assunto || "-"}`,
+      "🎯 *Interesse*",
+      `• Segmento: ${segmento || "-"}`,
+      `• Assunto: ${assunto || "-"}`,
       "",
-      "*Mensagem*",
-      mensagem || "-",
+      "💬 *Mensagem*",
+      mensagem ? `_${mensagem}_` : "_Não informada_",
       "",
-      `Autorização para contato: ${autorizacao}`,
+      "✅ *Autorização para contato*",
+      `• ${autorizacao}`,
+      "",
+      "Obrigada(o)! Aguardo retorno. 😊",
     ].join("\n");
 
     const whatsappUrl = `https://wa.me/${SCHOOL_WHATSAPP}?text=${encodeURIComponent(texto)}`;
