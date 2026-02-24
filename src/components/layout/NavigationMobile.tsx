@@ -8,7 +8,7 @@ import {
   Building2,
   GraduationCap,
   Home,
-  Layers3,
+  Images,
   Phone,
   Users,
 } from "lucide-react";
@@ -26,7 +26,7 @@ type HashTarget =
 const iconMap = {
   school: GraduationCap,
   book: BookOpenText,
-  layers: Layers3,
+  layers: Images,
   building: Building2,
   users: Users,
   phone: Phone,
