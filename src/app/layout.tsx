@@ -4,6 +4,7 @@ import "./globals.css";
 import ServiceWorkerRegister from "../components/ServiceWorkerRegister";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
+import { NavigationMobile } from "../components/layout/NavigationMobile";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,12 +30,14 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
+        className={`${geistSans.variable} ${geistMono.variable} antialiased pb-28 md:pb-0`}
       >
         <ServiceWorkerRegister />
         <Header />
         {children}
         <Footer />
+        <NavigationMobile />
       </body>
     </html>
   );
