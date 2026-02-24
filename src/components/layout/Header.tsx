@@ -4,15 +4,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "./Container";
-
-const navigation = [
-  { name: "Início", href: "/#inicio" },
-  { name: "Colégio Vivá", href: "/#sobre" },
-  { name: "Proposta Pedagógica", href: "/#proposta" },
-  { name: "Segmentos", href: "/#segmentos" },
-  { name: "Turmas", href: "/#turmas" },
-  { name: "Contato", href: "/#contato" },
-];
+import { navigationItems } from "./navigationItems";
 
 export function Header() {
   return (
@@ -35,7 +27,7 @@ export function Header() {
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          {navigation.map((item) => (
+          {navigationItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}

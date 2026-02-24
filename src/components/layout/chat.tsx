@@ -24,8 +24,8 @@ export function Chat() {
         aria-label={isOpen ? "Fechar chat" : "Abrir chat"}
         aria-expanded={isOpen}
         className={[
-          "fixed right-4 z-[60] flex h-14 items-center overflow-hidden rounded-full shadow-xl transition-all duration-300 ease-out md:right-6",
-          "bottom-[calc(env(safe-area-inset-bottom)+1rem)] md:bottom-6",
+          "fixed right-4 z-[70] flex h-14 items-center overflow-hidden rounded-full shadow-xl transition-all duration-300 ease-out md:right-6",
+          "bottom-[calc(env(safe-area-inset-bottom)+5.5rem)] md:bottom-6",
           isOpen
             ? "pointer-events-none w-14 translate-y-2 scale-95 justify-center bg-[var(--color-secondary)] text-white opacity-0"
             : "w-14 justify-center bg-[var(--color-primary)] text-white hover:scale-105",
