@@ -40,7 +40,7 @@ export function Header() {
 
         {/* CTA */}
         <Link
-          href="/#contato"
+          href="/contato"
           className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-[var(--color-primary)] text-white text-sm font-semibold hover:bg-[var(--color-primary-dark)] transition"
         >
           Agende uma visita

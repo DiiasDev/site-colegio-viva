@@ -11,5 +11,5 @@ export const navigationItems: NavigationItem[] = [
   { name: "Segmentos", href: "/#segmentos", icon: "layers" },
   { name: "Estrutura", href: "/#estrutura", icon: "building" },
   { name: "Turmas", href: "/#turmas", icon: "users" },
-  { name: "Contato", href: "/#contato", icon: "phone" },
+  { name: "Contato", href: "/contato", icon: "phone" },
 ];
