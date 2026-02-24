@@ -17,9 +17,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nome da Escola",
+  title: "Colégio Vivá",
   description: "Site oficial da escola",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    shortcut: "/icon.svg",
+    apple: "/icon-192.png",
+  },
 };
 
 export default function RootLayout({
