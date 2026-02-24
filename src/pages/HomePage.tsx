@@ -1,6 +1,7 @@
 import { Container } from "../components/layout/Container";
 import Link from "next/link";
 import Image from "next/image";
+import Chat from "../components/layout/chat";
 
 export default function Home() {
   return (
@@ -144,6 +145,8 @@ export default function Home() {
           </Link>
         </Container>
       </section>
+
+      <Chat />
     </main>
   );
 }
