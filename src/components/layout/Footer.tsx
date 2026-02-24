@@ -59,7 +59,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 shrink-0" />
-                Rua Exemplo, 123 - Cidade
+                Rua Santa Gertrudes, 1978 - Bela Vista IV - Cosmópolis/SP
               </li>
 
               <li className="flex items-center gap-2">
