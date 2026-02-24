@@ -5,7 +5,7 @@ import Image, { type StaticImageData } from "next/image";
 import { CalendarDays, Sparkles, Tag } from "lucide-react";
 
 import Carroussel from "@/src/components/gallery/Carroussel";
-import CabecalhoGallery from "@/src/components/gallery/CabecalhoGallery";
+import Cabecalho from "@/src/components/contact/Cabecalho";
 import Filter, { type FilterOption } from "@/src/components/gallery/Filter";
 
 import carrossel1 from "../../../public/carrossel1.png";
@@ -117,7 +117,7 @@ export default function GalleryPage() {
   return (
     <main className="bg-[var(--color-background)]">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-8 sm:px-6 lg:gap-10 lg:px-8 lg:py-10">
-        <CabecalhoGallery />
+        <Cabecalho title="Galeria" badge="Galeria" />
 
         <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
           <div className="lg:sticky lg:top-24">
