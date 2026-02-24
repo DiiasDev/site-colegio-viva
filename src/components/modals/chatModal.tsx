@@ -33,10 +33,62 @@ export function ChatModal({
 
   const canSubmit = useMemo(() => form.mensagem.trim().length > 0, [form.mensagem]);
 
+  function openEmailComposer(params: {
+    to: string;
+    subject: string;
+    body: string;
+  }) {
+    const { to, subject, body } = params;
+    const encodedTo = encodeURIComponent(to);
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(body);
+
+    const gmailAppUrl = `googlegmail://co?to=${encodedTo}&subject=${encodedSubject}&body=${encodedBody}`;
+    const mailtoUrl = `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
+
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (!isMobile) {
+      window.location.href = mailtoUrl;
+      return;
+    }
+
+    let fallbackTriggered = false;
+
+    const clearFallback = () => {
+      fallbackTriggered = true;
+      window.clearTimeout(timeoutId);
+      window.removeEventListener("pagehide", clearFallback);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        clearFallback();
+      }
+    };
+
+    const timeoutId = window.setTimeout(() => {
+      if (!fallbackTriggered && document.visibilityState === "visible") {
+        window.location.href = mailtoUrl;
+      }
+      clearFallback();
+    }, 900);
+
+    window.addEventListener("pagehide", clearFallback, { once: true });
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.location.href = gmailAppUrl;
+  }
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!canSubmit) return;
+
+    const nome = form.nome.trim() || "Nao informado";
+    const email = form.email.trim() || "Nao informado";
+    const assuntoInformado = form.assunto.trim() || "Nao informado";
+    const mensagem = form.mensagem.trim();
 
     const bodyLines = [
       "Olá, equipe do Colégio Vivá!",
@@ -44,23 +96,24 @@ export function ChatModal({
       "Nova mensagem enviada pelo chat do site.",
       "",
       "DADOS DO CONTATO",
-      `- Nome: ${form.nome.trim() || "Não informado"}`,
-      `- E-mail de retorno: ${form.email.trim() || "Não informado"}`,
-      `- Assunto informado: ${form.assunto.trim() || "Não informado"}`,
+      `Nome: ${nome}`,
+      `Email de retorno: ${email}`,
+      `Assunto informado: ${assuntoInformado}`,
       "",
       "MENSAGEM",
-      "----------------------------------------",
-      form.mensagem.trim(),
-      "----------------------------------------",
+      mensagem,
       "",
       "Enviado via formulário do site.",
     ];
 
     const subject = form.assunto.trim() || "Contato pelo site - Colégio Vivá";
-    const body = bodyLines.join("\n");
-    const mailtoUrl = `mailto:${schoolEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const body = bodyLines.join("\r\n");
 
-    window.location.href = mailtoUrl;
+    openEmailComposer({
+      to: schoolEmail,
+      subject,
+      body,
+    });
   }
 
   return (
