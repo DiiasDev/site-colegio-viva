@@ -6,6 +6,8 @@ import { useEffect, useMemo, useState } from "react";
 import {
   BookOpenText,
   Building2,
+  CalendarDays,
+  FolderOpen,
   GraduationCap,
   Home,
   Images,
@@ -27,8 +29,10 @@ type HashTarget =
 const iconMap = {
   school: GraduationCap,
   book: BookOpenText,
+  folder: FolderOpen,
   layers: Images,
   building: Building2,
+  calendar: CalendarDays,
   users: Users,
   phone: Phone,
 } as const;
