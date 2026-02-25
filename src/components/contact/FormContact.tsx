@@ -3,9 +3,63 @@
 import { FormEvent, useState } from "react";
 import { CheckCircle2, Send, ShieldCheck } from "lucide-react";
 
-const SCHOOL_WHATSAPP = "5519993292661";
+const SCHOOL_WHATSAPP = "5519991278346";
 
 type SubmitStatus = "idle" | "ready";
+type ContactFormData = {
+  name: string;
+  phone: string;
+  email: string;
+  segment: string;
+  subject: string;
+  message: string;
+  authorized: boolean;
+};
+
+function formatPhoneForMessage(value: string) {
+  const digits = value.replace(/\D/g, "");
+  const normalized = digits.length === 13 && digits.startsWith("55")
+    ? digits.slice(2)
+    : digits;
+
+  if (normalized.length === 11) {
+    return normalized.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+  }
+
+  if (normalized.length === 10) {
+    return normalized.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+  }
+
+  return value;
+}
+
+export function formatWhatsAppMessage(data: ContactFormData) {
+  const icons = {
+    lead: "\u{1F4E9}",
+    person: "\u{1F464}",
+    interest: "\u{1F393}",
+    message: "\u{1F4DD}",
+    check: "\u{2705}",
+  };
+
+  return `
+${icons.lead} *Novo lead recebido pelo site*
+
+${icons.person} *Dados do responsável*
+• Nome: ${data.name}
+• Telefone: ${formatPhoneForMessage(data.phone)}
+• E-mail: ${data.email || "Não informado"}
+
+${icons.interest} *Interesse*
+• Segmento: ${data.segment}
+• Assunto: ${data.subject}
+
+${icons.message} *Mensagem enviada*
+${data.message}
+
+${icons.check} *Autorizado para contato:* ${data.authorized ? "Sim" : "Não"}
+`.trim();
+}
 
 export default function FormContact() {
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
@@ -16,38 +70,20 @@ export default function FormContact() {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    const nome = String(formData.get("nome") || "").trim();
-    const telefone = String(formData.get("telefone") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const segmento = String(formData.get("segmento") || "").trim();
-    const assunto = String(formData.get("assunto") || "").trim();
-    const mensagem = String(formData.get("mensagem") || "").trim();
-    const autorizacao = formData.get("autorizacao") ? "Sim" : "Não";
+    const payload: ContactFormData = {
+      name: String(formData.get("nome") || "").trim() || "-",
+      phone: String(formData.get("telefone") || "").trim() || "-",
+      email: String(formData.get("email") || "").trim(),
+      segment: String(formData.get("segmento") || "").trim() || "-",
+      subject: String(formData.get("assunto") || "").trim() || "-",
+      message: String(formData.get("mensagem") || "").trim() || "Não informada",
+      authorized: Boolean(formData.get("autorizacao")),
+    };
 
-    const texto = [
-      "Olá, Colégio Vivá! 👋",
-      "Gostaria de atendimento sobre matrícula/visita.",
-      "",
-      "📋 *Dados do responsável*",
-      `• Nome: ${nome || "-"}`,
-      `• Telefone/WhatsApp: ${telefone || "-"}`,
-      `• E-mail: ${email || "Não informado"}`,
-      "",
-      "🎯 *Interesse*",
-      `• Segmento: ${segmento || "-"}`,
-      `• Assunto: ${assunto || "-"}`,
-      "",
-      "💬 *Mensagem*",
-      mensagem ? `_${mensagem}_` : "_Não informada_",
-      "",
-      "✅ *Autorização para contato*",
-      `• ${autorizacao}`,
-      "",
-      "Obrigada(o)! Aguardo retorno. 😊",
-    ].join("\n");
-
-    const whatsappUrl = `https://wa.me/${SCHOOL_WHATSAPP}?text=${encodeURIComponent(texto)}`;
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    const whatsappUrl = new URL("https://api.whatsapp.com/send");
+    whatsappUrl.searchParams.set("phone", SCHOOL_WHATSAPP);
+    whatsappUrl.searchParams.set("text", formatWhatsAppMessage(payload));
+    window.open(whatsappUrl.toString(), "_blank", "noopener,noreferrer");
     setSubmitStatus("ready");
   }
 

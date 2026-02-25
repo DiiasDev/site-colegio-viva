@@ -32,8 +32,8 @@ export default function CardsContact() {
       id: 2,
       title: "Telefone / WhatsApp",
       subtitle: "Atendimento da secretaria",
-      content: "(19) 99999-9999 \n(19) 00000-0000",
-      href: "https://wa.me/5519999999999",
+      content: "(19) 99127-8346",
+      href: "https://wa.me/5519991278346",
       icon: "phone",
     },
     {
@@ -48,7 +48,7 @@ export default function CardsContact() {
       id: 4,
       title: "Horário de atendimento",
       subtitle: "Secretaria escolar",
-      content: "Segunda a sexta, das 7h às 18h",
+      content: "Segunda a sexta, das 7h às 17:30",
       icon: "hours",
     },
   ] satisfies CardContactItem[];

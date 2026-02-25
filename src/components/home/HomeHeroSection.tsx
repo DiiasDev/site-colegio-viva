@@ -91,7 +91,7 @@ export function HomeHeroSection() {
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-primary-dark)]">
               Rotina que conecta
             </p>
-            <div className="mt-3 grid grid-cols-3 gap-3 text-center">
+            <div className="mt-3 grid grid-cols-3 gap-2 text-center sm:gap-3">
               {[
                 { label: "Sala", valor: "Aprender" },
                 { label: "Projeto", valor: "Explorar" },
@@ -99,12 +99,12 @@ export function HomeHeroSection() {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] px-3 py-2"
+                  className="min-w-0 rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] px-2 py-2 sm:px-3"
                 >
                   <p className="text-[11px] font-medium text-[var(--color-text-secondary)]">
                     {item.label}
                   </p>
-                  <p className="text-sm font-semibold text-[var(--color-secondary)]">
+                  <p className="break-words text-xs font-semibold leading-tight text-[var(--color-secondary)] sm:text-sm">
                     {item.valor}
                   </p>
                 </div>
@@ -116,4 +116,3 @@ export function HomeHeroSection() {
     </section>
   );
 }
-

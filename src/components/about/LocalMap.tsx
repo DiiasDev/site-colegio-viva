@@ -8,11 +8,11 @@ const SCHOOL_LOCATION = {
   addressLine1: "Endereço completo da escola",
   addressLine2: "Hortolândia - SP",
   // coordinates: "-22.6517666, -47.1860287",
-  visitHours: "Seg a Sex • 7h às 18h",
-  phoneLabel: "(19) 99999-9999",
+  visitHours: "Seg a Sex • 7h às 17:30",
+  phoneLabel: "(19) 99127-8346",
   mapsUrl:
     "https://www.google.com/maps?q=-22.65176660461467,-47.18602867024823",
-  whatsappUrl: "https://wa.me/5519999999999",
+  whatsappUrl: "https://wa.me/5519991278346",
 };
 
 const EMBED_SRC =
