@@ -4,6 +4,16 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 
 import evento1 from "../../../public/evento1.webp";
 import evento2 from "../../../public/evento2.png";
+import reuniaoPais from "../../../public/reuniao.png"
+import literatura from "../../../public/literatura.png"
+import oficinaCulinaria from "../../../public/oficinaCulinaria.png" 
+import projetosSemestre from "../../../public/projetosSemestre.png" 
+import avaliacao from "../../../public/avaliacao.png" 
+import encontro from "../../../public/encontro.png" 
+import descobertas from "../../../public/descobertas.png" 
+import encerramento from "../../../public/encerramento.png" 
+
+
 
 dayjs.extend(customParseFormat);
 
@@ -68,7 +78,7 @@ export const calendarData: CalendarEvent[] = [
     horario: "19:00",
     texto: "Encontro de alinhamento pedagógico, rotina escolar, combinados e apresentação do plano do semestre.",
     local: "Auditório do Colégio Vivá",
-    imagem: evento1,
+    imagem: reuniaoPais,
     categoria: "Reunião",
     publico: "Famílias",
     etapa: "Todas as turmas",
@@ -82,7 +92,7 @@ export const calendarData: CalendarEvent[] = [
     horario: "09:30",
     texto: "Programação especial com contação de histórias, troca de livros e oficinas de ilustração.",
     local: "Biblioteca e pátio coberto",
-    imagem: evento2,
+    imagem: literatura,
     categoria: "Projeto",
     publico: "Toda a escola",
     etapa: "Maternal ao Infantil V",
@@ -97,7 +107,7 @@ export const calendarData: CalendarEvent[] = [
     horario: "15:00",
     texto: "Atividade mão na massa com receitas simples, foco em autonomia e trabalho em grupo.",
     local: "Espaço maker / cozinha experimental",
-    imagem: evento1,
+    imagem: oficinaCulinaria,
     categoria: "Oficina",
     publico: "Educação Infantil",
     etapa: "Infantil II ao Infantil V",
@@ -111,7 +121,7 @@ export const calendarData: CalendarEvent[] = [
     horario: "10:00",
     texto: "Exposição dos registros e produções das crianças com circuitos interativos para as famílias.",
     local: "Salas temáticas e pátio principal",
-    imagem: evento2,
+    imagem: projetosSemestre,
     categoria: "Projeto",
     publico: "Famílias",
     etapa: "Todas as turmas",
@@ -125,7 +135,7 @@ export const calendarData: CalendarEvent[] = [
     horario: "08:30",
     texto: "Observações e propostas investigativas para acompanhamento do desenvolvimento das turmas.",
     local: "Salas de aula",
-    imagem: evento1,
+    imagem: avaliacao,
     categoria: "Avaliação",
     publico: "Educação Infantil",
     etapa: "Infantil I ao Infantil V",
@@ -139,7 +149,7 @@ export const calendarData: CalendarEvent[] = [
     horario: "17:45",
     texto: "Formação interna sobre documentação pedagógica, acolhimento e planejamento do próximo ciclo.",
     local: "Sala multiuso",
-    imagem: evento2,
+    imagem: encontro,
     categoria: "Reunião",
     publico: "Equipe pedagógica",
     etapa: "Equipe interna",
@@ -152,7 +162,7 @@ export const calendarData: CalendarEvent[] = [
     horario: "14:00",
     texto: "Experimentos, apresentações e estações de investigação criadas pelas turmas com participação das famílias.",
     local: "Pátio e salas integradas",
-    imagem: evento1,
+    imagem: descobertas,
     categoria: "Evento",
     publico: "Toda a escola",
     etapa: "Maternal ao Infantil V",
@@ -166,7 +176,7 @@ export const calendarData: CalendarEvent[] = [
     horario: "18:30",
     texto: "Momento de celebração do ano com apresentações, retrospectiva e homenagem às conquistas das turmas.",
     local: "Auditório + área externa",
-    imagem: evento2,
+    imagem: encerramento,
     categoria: "Evento",
     publico: "Famílias",
     etapa: "Todas as turmas",
