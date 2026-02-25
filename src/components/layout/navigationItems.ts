@@ -18,7 +18,7 @@ export const navigationItems: NavigationItem[] = [
   { name: "Colégio Vivá", href: "/colegio-viva", icon: "school" },
   { name: "Projetos", href: "/projetos", icon: "folder" },
   { name: "Galeria", href: "/galeria", icon: "layers" },
-  { name: "Calendario", href: "/calendario", icon: "calendar" },
+  { name: "Calendário", href: "/calendario", icon: "calendar" },
   { name: "Turmas", href: "/#turmas", icon: "users" },
   { name: "Contato", href: "/contato", icon: "phone" },
 ];
