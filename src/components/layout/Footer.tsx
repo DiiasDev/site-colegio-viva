@@ -17,14 +17,13 @@ export function Footer() {
       "Rua Santa Gertrudes, 1978 - Bela Vista IV, Cosmópolis - SP, 13150-312",
     mapsHref:
       "https://maps.google.com/?q=Rua%20Santa%20Gertrudes%2C%201978%20Cosm%C3%B3polis%20SP",
-    phone: "(19) 99999-9999",
-    secondaryPhone: "(19) 00000-0000",
-    phoneHref: "https://wa.me/5519999999999",
+    phone: "(19) 99127-8346",
+    phoneHref: "https://wa.me/5519991278346",
     email: "colegioVivah@gmail.com",
     emailHref: "mailto:colegioVivah@gmail.com",
     instagram: "@colegiovivah",
     instagramHref: "https://instagram.com/colegiovivah",
-    hours: "Segunda a sexta, das 7h às 18h",
+    hours: "Segunda a sexta, das 7h às 17:30",
   };
 
   const navLinks = navigationItems.filter(
@@ -102,17 +101,14 @@ export function Footer() {
                 </li>
                 <li className="flex items-start gap-2">
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-primary)]" />
-                  <div className="min-w-0">
-                    <Link
-                      href={contact.phoneHref}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="block transition hover:text-white"
-                    >
-                      {contact.phone}
-                    </Link>
-                    <span className="block text-white/55">{contact.secondaryPhone}</span>
-                  </div>
+                  <Link
+                    href={contact.phoneHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="min-w-0 transition hover:text-white"
+                  >
+                    {contact.phone}
+                  </Link>
                 </li>
                 <li className="flex items-start gap-2">
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-primary)]" />
