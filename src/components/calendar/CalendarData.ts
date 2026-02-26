@@ -1,19 +1,16 @@
 import type { StaticImageData } from "next/image";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-
 import evento1 from "../../../public/evento1.webp";
 import evento2 from "../../../public/evento2.png";
-import reuniaoPais from "../../../public/reuniao.png"
-import literatura from "../../../public/literatura.png"
-import oficinaCulinaria from "../../../public/oficinaCulinaria.png" 
-import projetosSemestre from "../../../public/projetosSemestre.png" 
-import avaliacao from "../../../public/avaliacao.png" 
-import encontro from "../../../public/encontro.png" 
-import descobertas from "../../../public/descobertas.png" 
-import encerramento from "../../../public/encerramento.png" 
-
-
+import reuniaoPais from "../../../public/reuniao.png";
+import literatura from "../../../public/literatura.png";
+import oficinaCulinaria from "../../../public/oficinaCulinaria.png";
+import projetosSemestre from "../../../public/projetosSemestre.png";
+import avaliacao from "../../../public/avaliacao.png";
+import encontro from "../../../public/encontro.png";
+import descobertas from "../../../public/descobertas.png";
+import encerramento from "../../../public/encerramento.png";
 
 dayjs.extend(customParseFormat);
 
@@ -27,7 +24,8 @@ export type CalendarEvent = {
   texto: string;
   local: string;
   saida?: string;
-  imagem: StaticImageData;
+  imagem: StaticImageData | string;
+  tipoMidia?: "imagem" | "video";
   categoria: "Evento" | "Passeio" | "Reunião" | "Projeto" | "Avaliação" | "Oficina";
   publico: "Famílias" | "Educação Infantil" | "Toda a escola" | "Equipe pedagógica";
   etapa: string;

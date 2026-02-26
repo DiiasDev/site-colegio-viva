@@ -22,14 +22,28 @@ export default function CalendarEventCard({ event }: CalendarEventCardProps) {
     <article className="group overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[0_20px_50px_-38px_rgba(31,61,43,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_30px_70px_-40px_rgba(31,61,43,0.42)]">
       <div className="grid gap-0 md:grid-cols-[240px_1fr]">
         <div className="relative min-h-[190px] md:min-h-full">
-          <Image
-            src={event.imagem}
-            alt={event.titulo}
-            fill
-            className="object-cover transition duration-500 group-hover:scale-[1.03]"
-            sizes="(max-width: 768px) 100vw, 240px"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[rgba(31,61,43,0.18)] via-transparent to-transparent" />
+          {event.tipoMidia === "video" ? (
+            <video
+              src={typeof event.imagem === "string" ? event.imagem : undefined}
+              className="absolute inset-0 h-full w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              controls={false}
+              disablePictureInPicture
+            />
+          ) : (
+            <Image
+              src={event.imagem}
+              alt={event.titulo}
+              fill
+              className="object-cover transition duration-500 group-hover:scale-[1.03]"
+              sizes="(max-width: 768px) 100vw, 240px"
+            />
+          )}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(31,61,43,0.18)] via-transparent to-transparent" />
           <div className="absolute left-3 top-3 flex flex-wrap gap-2">
             <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[var(--color-secondary)] backdrop-blur-sm">
               {event.categoria}

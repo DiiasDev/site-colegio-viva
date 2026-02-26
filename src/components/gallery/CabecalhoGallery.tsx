@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Camera, Sparkles, Images, ChevronRight } from "lucide-react";
 
-import heroImage from "../../../public/crianca1.png";
+import heroImage from "../../../public/Real/image4.png";
 
 export default function CabecalhoGallery() {
   return (

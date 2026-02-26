@@ -75,7 +75,7 @@ export function HomeHeroSection() {
 
           <div className="relative h-[360px] overflow-hidden rounded-[28px] border border-white/60 bg-[var(--color-surface)] shadow-[0_34px_90px_-42px_rgba(31,61,43,0.38)] sm:h-[430px] lg:h-[520px]">
             <Image
-              src="/colegioTeste1.png"
+              src="/Real/image4.png"
               alt="Ambiente do Colégio Vivá"
               fill
               className="object-cover"
