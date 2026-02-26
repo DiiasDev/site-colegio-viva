@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GraduationCap } from "lucide-react";
 
-import defaultHero from "../../../public/colegioTeste1.png";
+import defaultHero from "../../../public/Real/image4.png";
 
 type CabecalhoProps = {
   title?: string;

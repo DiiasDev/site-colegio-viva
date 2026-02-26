@@ -14,7 +14,8 @@ type CarouselItem = {
   subtitle: string;
   category: string;
   content: string;
-  image: StaticImageData;
+  media: StaticImageData | string;
+  mediaType?: "image" | "video";
 };
 
 type CarrousselProps = {
@@ -41,17 +42,31 @@ export default function Carroussel({ items }: CarrousselProps) {
         {items.map((item) => (
           <SwiperSlide key={item.id} className="!h-auto">
             <div className="relative min-h-[470px] overflow-hidden rounded-[1.5rem] border border-white/70 bg-white sm:min-h-[520px]">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 66vw"
-                priority={item.id === items[0]?.id}
-              />
+              {item.mediaType === "video" ? (
+                <video
+                  src={typeof item.media === "string" ? item.media : undefined}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  controls={false}
+                  disablePictureInPicture
+                />
+              ) : (
+                <Image
+                  src={item.media}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  priority={item.id === items[0]?.id}
+                />
+              )}
 
-              <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(31,61,43,0.78)_0%,rgba(31,61,43,0.52)_34%,rgba(31,61,43,0.18)_60%,rgba(31,61,43,0.12)_100%)]" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(122,193,67,0.2),transparent_40%),radial-gradient(circle_at_90%_85%,rgba(244,180,0,0.12),transparent_36%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(31,61,43,0.78)_0%,rgba(31,61,43,0.52)_34%,rgba(31,61,43,0.18)_60%,rgba(31,61,43,0.12)_100%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(122,193,67,0.2),transparent_40%),radial-gradient(circle_at_90%_85%,rgba(244,180,0,0.12),transparent_36%)]" />
 
               <div className="relative z-10 flex min-h-[470px] flex-col justify-between p-5 sm:min-h-[520px] sm:p-7">
                 <div className="flex items-start justify-between gap-3">

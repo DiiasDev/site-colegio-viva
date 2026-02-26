@@ -1,11 +1,11 @@
 import type { StaticImageData } from "next/image";
 
-import image1 from "../../../public/carrossel2.png";
-import image2 from "../../../public/carrossel3.png";
-import image3 from "../../../public/carrossel4.png";
-import image4 from "../../../public/carrossel5.png";
-import image5 from "../../../public/carrossel6.png";
-import image6 from "../../../public/carrossel1.png";
+import image1 from "../../../public/Real/image1.png";
+import image2 from "../../../public/Real/image2.png";
+import image3 from "../../../public/Real/image3.png";
+import image4 from "../../../public/Real/image4.png";
+import image5 from "../../../public/Real/image5.png";
+import image6 from "../../../public/Real/image2.png";
 
 export type ClassTabId = "apresentacao" | "grade" | "profissionais" | "fotos";
 

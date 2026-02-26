@@ -8,20 +8,14 @@ import Carroussel from "@/src/components/gallery/Carroussel";
 import Cabecalho from "@/src/components/contact/Cabecalho";
 import Filter, { type FilterOption } from "@/src/components/gallery/Filter";
 
-import carrossel1 from "../../../public/carrossel1.png";
-import carrossel2 from "../../../public/carrossel2.png";
-import carrossel3 from "../../../public/carrossel3.png";
-import carrossel4 from "../../../public/carrossel4.png";
-import carrossel5 from "../../../public/carrossel5.png";
-import carrossel6 from "../../../public/carrossel6.png";
-
 type GalleryItem = {
   id: number;
   title: string;
   subtitle: string;
   category: string;
   content: string;
-  image: StaticImageData;
+  media: StaticImageData | string;
+  mediaType?: "image" | "video";
   badge: string;
 };
 
@@ -34,7 +28,7 @@ const galleryItems: GalleryItem[] = [
     badge: "Projeto",
     content:
       "Momentos em que as crianças exploram materiais, constroem hipóteses e transformam descobertas em experiências significativas de aprendizagem.",
-    image: carrossel1,
+    media: "/Real/image2.png",
   },
   {
     id: 2,
@@ -44,7 +38,7 @@ const galleryItems: GalleryItem[] = [
     badge: "Rotina",
     content:
       "A convivência diária favorece autonomia, escuta e colaboração. Cada brincadeira vira oportunidade para cuidar, compartilhar e se expressar.",
-    image: carrossel2,
+    media: "/Real/image3.png",
   },
   {
     id: 3,
@@ -53,38 +47,73 @@ const galleryItems: GalleryItem[] = [
     category: "Arte",
     badge: "Oficina",
     content:
-      "Propostas artísticas que respeitam o ritmo da infância e incentivam a criação autoral, valorizando processos, experimentação e sensibilidade.",
-    image: carrossel3,
+      "Atividades com tinta, materiais e experimentação que valorizam processo, curiosidade e expressão das crianças no cotidiano da turma.",
+    media: "/Real/image4.png",
   },
   {
     id: 4,
-    title: "Momentos de descoberta em ambientes acolhedores",
-    subtitle: "Exploração e observação",
+    title: "Registro real da atividade de pintura",
+    subtitle: "Documentação pedagógica",
     category: "Aprendizagem",
-    badge: "Descoberta",
+    badge: "Vídeo",
     content:
-      "Ambientes preparados para despertar interesse, ampliar repertório e tornar o aprender uma experiência prazerosa, concreta e afetiva.",
-    image: carrossel4,
+      "Vídeo de uma proposta prática em sala, mostrando participação, observação e interação das crianças durante a vivência.",
+    media: "/Real/Video1.mp4",
+    mediaType: "video",
   },
   {
     id: 5,
-    title: "Experiências lúdicas com protagonismo infantil",
+    title: "Protagonismo infantil em atividade guiada",
     subtitle: "Infância em ação",
     category: "Brincadeiras",
-    badge: "Lúdico",
+    badge: "Projeto",
     content:
-      "As crianças participam ativamente das propostas, tomando decisões, investigando possibilidades e desenvolvendo confiança em cada etapa.",
-    image: carrossel5,
+      "As crianças participam ativamente das propostas, investigando possibilidades e desenvolvendo confiança em cada etapa da rotina escolar.",
+    media: "/Real/image1.png",
   },
   {
     id: 6,
     title: "Registros de uma rotina viva e afetiva",
     subtitle: "Cuidado, acolhimento e presença",
     category: "Convivência",
-    badge: "Vivá",
+    badge: "Vídeo",
     content:
-      "A galeria apresenta recortes de uma rotina construída com carinho, intencionalidade pedagógica e respeito à singularidade de cada criança.",
-    image: carrossel6,
+      "Recorte em vídeo da rotina pedagógica com foco em vínculo, acompanhamento e participação das crianças em propostas cotidianas.",
+    media: "/Real/video2.mp4",
+    mediaType: "video",
+  },
+  {
+    id: 7,
+    title: "Exploração sensorial e observação",
+    subtitle: "Aprendizagem em processo",
+    category: "Aprendizagem",
+    badge: "Vídeo",
+    content:
+      "Registro audiovisual de uma vivência prática que evidencia curiosidade, coordenação motora e mediação pedagógica.",
+    media: "/Real/video3.mp4",
+    mediaType: "video",
+  },
+  {
+    id: 8,
+    title: "Interações e vínculos em sala",
+    subtitle: "Convivência e rotina",
+    category: "Convivência",
+    badge: "Vídeo",
+    content:
+      "Vídeo com foco nas interações entre as crianças, mostrando momentos de atenção, espera e colaboração nas atividades.",
+    media: "/Real/video5.mp4",
+    mediaType: "video",
+  },
+  {
+    id: 9,
+    title: "Vivência lúdica com mediação docente",
+    subtitle: "Brincar, experimentar e aprender",
+    category: "Brincadeiras",
+    badge: "Vídeo",
+    content:
+      "Registro em vídeo de uma proposta lúdica em sala que reforça a intencionalidade pedagógica e o protagonismo infantil.",
+    media: "/Real/video6.mp4",
+    mediaType: "video",
   },
 ];
 
@@ -182,14 +211,28 @@ export default function GalleryPage() {
                     ].join(" ")}
                   >
                     <div className="relative min-h-[260px] sm:min-h-[320px]">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(31,61,43,0.18)] via-transparent to-transparent" />
+                      {item.mediaType === "video" ? (
+                        <video
+                          src={typeof item.media === "string" ? item.media : undefined}
+                          className="absolute inset-0 h-full w-full object-cover"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="auto"
+                          controls={false}
+                          disablePictureInPicture
+                        />
+                      ) : (
+                        <Image
+                          src={item.media}
+                          alt={item.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                        />
+                      )}
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(31,61,43,0.18)] via-transparent to-transparent" />
                     </div>
 
                     <div className="flex flex-col justify-center p-6 sm:p-8">
