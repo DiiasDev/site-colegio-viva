@@ -2,9 +2,9 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Nome da Escola",
-    short_name: "Escola",
-    description: "Site oficial da escola",
+    name: "Colégio Vivá",
+    short_name: "Colégio Vivá",
+    description: "Site oficial do colégio",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
