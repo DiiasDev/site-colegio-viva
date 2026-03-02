@@ -51,6 +51,7 @@ export default function Cabecalho({
 }: CabecalhoProps) {
   const pathname = usePathname();
   const breadcrumb = breadcrumbOverride ?? getBreadcrumbLabels(pathname);
+  const pathSegments = (pathname ?? "/").split("/").filter(Boolean);
   const currentTitle = title ?? breadcrumb[breadcrumb.length - 1] ?? "Página";
   const currentBadge = badge ?? (breadcrumb.length > 1 ? breadcrumb[breadcrumb.length - 2] ?? "Página" : "Página");
 
@@ -81,7 +82,8 @@ export default function Cabecalho({
           <p className="mt-3 flex flex-wrap items-center justify-center gap-x-2 text-xs font-medium uppercase tracking-[0.2em] text-white/85 sm:text-sm">
             {breadcrumb.map((item, index) => {
               const isLast = index === breadcrumb.length - 1;
-              const href = index === 0 ? "/" : null;
+              const href =
+                isLast || index > pathSegments.length ? null : index === 0 ? "/" : `/${pathSegments.slice(0, index).join("/")}`;
 
               return (
                 <span key={`${item}-${index}`} className="inline-flex items-center">

@@ -5,8 +5,8 @@ import { ArrowUpRight, Clock3, MapPin, Navigation, Phone } from "lucide-react";
 
 const SCHOOL_LOCATION = {
   name: "Colégio Vivá",
-  addressLine1: "Endereço completo da escola",
-  addressLine2: "Hortolândia - SP",
+  addressLine1: "Rua Santa Gertrudes, 1978 - Bela Vista IV",
+  addressLine2: "Cosmópolis - SP, 13150-312",
   // coordinates: "-22.6517666, -47.1860287",
   visitHours: "Seg a Sex • 7h às 17:30",
   phoneLabel: "(19) 99127-8346",
