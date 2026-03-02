@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { LucideIcon } from "lucide-react";
@@ -303,6 +304,7 @@ function ProjectListCard({
   compact?: boolean;
 }) {
   const Icon = iconMap[project.icon];
+  const hasCoverImage = Boolean(project.imagemCapa);
 
   return (
     <Link
@@ -321,11 +323,30 @@ function ProjectListCard({
       >
         <div
           className={[
-            "relative overflow-hidden bg-[linear-gradient(160deg,rgba(122,193,67,0.18),rgba(244,180,0,0.12),rgba(31,61,43,0.10))] p-5 sm:p-6",
+            "relative overflow-hidden p-5 sm:p-6",
+            hasCoverImage
+              ? "bg-[var(--color-secondary)]"
+              : "bg-[linear-gradient(160deg,rgba(122,193,67,0.18),rgba(244,180,0,0.12),rgba(31,61,43,0.10))]",
             compact ? "min-h-[120px]" : "min-h-[180px]",
           ].join(" ")}
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgba(122,193,67,0.25),transparent_48%),radial-gradient(circle_at_75%_75%,rgba(244,180,0,0.16),transparent_50%)]" />
+          {project.imagemCapa ? (
+            <Image
+              src={project.imagemCapa}
+              alt={`Imagem de capa do projeto ${project.titulo}`}
+              fill
+              className="object-cover transition duration-500 group-hover:scale-[1.02]"
+              sizes={compact ? "(max-width: 768px) 100vw, 40vw" : "(max-width: 1024px) 100vw, 45vw"}
+            />
+          ) : null}
+          <div
+            className={[
+              "absolute inset-0",
+              hasCoverImage
+                ? "bg-[linear-gradient(180deg,rgba(16,40,28,0.48),rgba(16,40,28,0.58))]"
+                : "bg-[radial-gradient(circle_at_20%_25%,rgba(122,193,67,0.25),transparent_48%),radial-gradient(circle_at_75%_75%,rgba(244,180,0,0.16),transparent_50%)]",
+            ].join(" ")}
+          />
           <div className="relative flex h-full flex-col justify-between">
             <div className="flex items-center justify-between gap-3">
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-[color-mix(in_srgb,var(--color-primary)_28%,white)] bg-white/70 text-[var(--color-primary-dark)] backdrop-blur">
@@ -334,7 +355,9 @@ function ProjectListCard({
               <span
                 className={[
                   "rounded-full px-3 py-1 text-xs font-semibold",
-                  project.status === "Inscrições abertas"
+                  hasCoverImage
+                    ? "bg-white/85 text-[var(--color-secondary)]"
+                    : project.status === "Inscrições abertas"
                     ? "bg-[color-mix(in_srgb,var(--color-accent)_22%,white)] text-[var(--color-secondary)]"
                     : project.status === "Concluído"
                       ? "bg-[var(--color-border)] text-[var(--color-text-secondary)]"
@@ -348,13 +371,16 @@ function ProjectListCard({
             <div>
               <p
                 className={[
-                  "font-semibold uppercase tracking-[0.12em] text-[var(--color-secondary)]/80",
+                  "font-semibold uppercase tracking-[0.12em]",
+                  hasCoverImage ? "text-white/90" : "text-[var(--color-secondary)]/80",
                   compact ? "line-clamp-2 text-[10px]" : "text-xs",
                 ].join(" ")}
               >
                 {project.imagem}
               </p>
-              <p className="mt-2 text-sm text-[var(--color-secondary)]/80">{project.categoria}</p>
+              <p className={["mt-2 text-sm", hasCoverImage ? "text-white/90" : "text-[var(--color-secondary)]/80"].join(" ")}>
+                {project.categoria}
+              </p>
             </div>
           </div>
         </div>
@@ -481,6 +507,19 @@ function ProjectDetail({ project }: { project: ProjectData }) {
                 <InfoRow icon={MapPin} label="Local" value={project.local} />
                 <InfoRow icon={UserRound} label="Faixa etária" value={project.faixaEtaria} />
                 <InfoRow icon={Sparkles} label="Coordenação" value={project.coordenacao} />
+                {project.imagemResponsavel ? (
+                  <div className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-background)] p-3">
+                    <div className="relative mx-auto aspect-[3/4] w-full max-w-[260px] overflow-hidden rounded-xl border border-[var(--color-border)] bg-white">
+                      <Image
+                        src={project.imagemResponsavel}
+                        alt={`Responsável pelo projeto ${project.titulo}`}
+                        fill
+                        className="object-cover object-center"
+                        sizes="260px"
+                      />
+                    </div>
+                  </div>
+                ) : null}
               </InfoPanel>
 
               <InfoPanel title="Público e propósito">

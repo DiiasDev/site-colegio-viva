@@ -43,6 +43,8 @@ export type ProjectData = {
   metricas: ProjectMetric[];
   atividades: string[];
   cronograma: ProjectTimelineItem[];
+  imagemCapa?: string;
+  imagemResponsavel?: string;
 };
 
 export type projectsData = ProjectData;
@@ -60,6 +62,8 @@ export const pData: ProjectData[] = [
     resumo:
       "Programa de educação nutricional escolar que desperta curiosidade, confiança e autonomia alimentar sem cobranças ou imposições.",
     imagem: "Projeto Nutrir, Cuidar e Educar",
+    imagemCapa: "/Nutrar/Nutrar1.png",
+    imagemResponsavel: "/Nutrar/responsavel.png",
     icon: "leaf",
     categoria: "Sustentabilidade",
     status: "Em andamento",
