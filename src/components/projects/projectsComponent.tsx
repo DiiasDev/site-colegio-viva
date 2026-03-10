@@ -607,6 +607,38 @@ function ProjectDetail({ project }: { project: ProjectData }) {
           </div>
         </div>
 
+        {project.galeriaImagens && project.galeriaImagens.length > 0 ? (
+          <section className="mt-8">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--color-primary-dark)]">
+                  Galeria do projeto
+                </p>
+                <h2 className="mt-1 text-2xl font-bold text-[var(--color-secondary)]">
+                  Registros reais das atividades
+                </h2>
+              </div>
+            </div>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {project.galeriaImagens.map((image, index) => (
+                <div
+                  key={image}
+                  className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-[0_18px_45px_-44px_rgba(31,61,43,0.25)]"
+                >
+                  <Image
+                    src={image}
+                    alt={`Registro ${index + 1} do projeto ${project.titulo}`}
+                    fill
+                    className="object-cover transition duration-500 group-hover:scale-[1.02]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <section className="mt-8">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>

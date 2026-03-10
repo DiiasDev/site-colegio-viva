@@ -45,6 +45,7 @@ export type ProjectData = {
   cronograma: ProjectTimelineItem[];
   imagemCapa?: string;
   imagemResponsavel?: string;
+  galeriaImagens?: string[];
 };
 
 export type projectsData = ProjectData;
@@ -116,58 +117,73 @@ export const pData: ProjectData[] = [
   {
     id: 2,
     slug: "ballet",
-    titulo: "Ballet",
-    subtitulo: "Expressão corporal, musicalidade e disciplina por meio da dança",
-    data: "26/02/2026",
-    periodo: "Março a Dezembro",
+    titulo: "Projeto de Balé - Stúdio DH Dance",
+    subtitulo: "Arte, disciplina e desenvolvimento com ensino técnico e acolhedor",
+    data: "10/03/2026",
+    periodo: "Durante o ano letivo de 2026",
     conteudo:
-      "O projeto de Ballet oferece aulas voltadas ao desenvolvimento motor, postura, coordenação, ritmo e expressão artística, respeitando a faixa etária e o processo de aprendizagem de cada criança.",
+      "O Stúdio DH Dance atua em Cosmópolis há mais de 13 anos, promovendo arte, disciplina e desenvolvimento para crianças, jovens e adultos. Em novas instalações, com espaço amplo, moderno e apropriado para a prática da dança, o projeto oferece conforto, segurança e estrutura específica para cada modalidade. A parceria com o Colégio Vivá já acontece há três anos e, em 2026, os alunos contam com bolsa 100% nas aulas de balé no Stúdio, além de desconto para irmãos e familiares próximos.",
     resumo:
-      "Projeto de dança com foco em técnica básica, expressão corporal e vivências artísticas.",
-    imagem: "Gradiente claro com tons suaves e dourados",
+      "Parceria entre Colégio Vivá e Stúdio DH Dance com bolsa 100% no balé, estrutura moderna e formação artística integral.",
+    imagem: "Registros reais das aulas no Stúdio DH Dance",
+    imagemCapa: "/ballet/ballet1.png",
+    imagemResponsavel: "/ballet/professora_ballet.png",
+    galeriaImagens: [
+      "/ballet/ballet1.png",
+      "/ballet/ballet2.png",
+      "/ballet/ballet3.png",
+      "/ballet/ballet4.png",
+      "/ballet/ballet5.png",
+      "/ballet/ballet6.png",
+    ],
     icon: "palette",
     categoria: "Arte",
-    status: "Inscrições abertas",
-    faixaEtaria: "Infantil e Fundamental I",
-    local: "Sala de dança / espaço multiuso",
-    coordenacao: "Professor(a) de Ballet e coordenação pedagógica",
-    publico: "Estudantes inscritos",
+    status: "Em andamento",
+    faixaEtaria: "Crianças, jovens e adultos",
+    local: "Stúdio DH Dance - Cosmópolis/SP",
+    coordenacao: "Equipe do Stúdio DH Dance (profissionais qualificados, com destaque no balé)",
+    publico: "Alunos do Colégio Vivá e comunidade local",
     objetivo:
-      "Desenvolver coordenação motora, consciência corporal, musicalidade e expressão artística.",
+      "Ampliar o acesso à cultura e à formação artística por meio do balé, fortalecendo técnica, disciplina, expressão e desenvolvimento integral.",
     impactoEsperado:
-      "Fortalecimento da disciplina, autoestima, postura e participação em atividades coletivas de dança.",
-    tags: ["Dança", "Ballet", "Expressão Corporal", "Arte"],
+      "Contribuição para o desenvolvimento físico, emocional e social dos alunos, com mais acesso à arte, fortalecimento da autoestima e convivência saudável.",
+    tags: ["Balé", "Arte", "Formação Artística", "Cultura", "Parceria Escola-Comunidade"],
     destaques: [
-      "Turmas organizadas por faixa etária",
-      "Trabalho de técnica, ritmo e expressão",
-      "Apresentação artística de culminância",
+      "Stúdio com mais de 13 anos de atuação em Cosmópolis",
+      "Novas instalações com estrutura moderna e apropriada para dança",
+      "Parceria com o Colégio Vivá consolidada há três anos",
+      "Bolsa 100% no balé para alunos do Colégio Vivá e desconto para familiares em 2026",
     ],
     metricas: [
-      { label: "Turmas", value: "3" },
-      { label: "Aulas por semana", value: "2" },
-      { label: "Apresentações anuais", value: "1" },
+      { label: "Atuação do Stúdio", value: "+13 anos" },
+      { label: "Parceria com o Vivá", value: "3 anos" },
+      { label: "Benefício no balé", value: "Bolsa 100%" },
+      { label: "Novo benefício 2026", value: "Desconto para familiares" },
     ],
     atividades: [
-      "Exercícios de alongamento e postura",
-      "Sequências rítmicas e coordenação",
-      "Prática de passos básicos de ballet",
-      "Ensaios para apresentação final",
+      "Aulas regulares de balé com orientação técnica e acompanhamento pedagógico",
+      "Práticas de condicionamento físico e flexibilidade para apoio ao desempenho corporal",
+      "Vivências de expressão corporal, musicalidade e postura",
+      "Atividades formativas em ambiente acolhedor, seguro e estruturado",
     ],
     cronograma: [
       {
-        phase: "Matrículas e formação de turmas",
-        period: "Março",
-        description: "Organização das turmas por faixa etária e acolhimento inicial.",
+        phase: "Acolhimento e integração",
+        period: "Início do ciclo letivo",
+        description:
+          "Recepção dos alunos, organização das turmas e adaptação ao espaço e à rotina das aulas.",
       },
       {
-        phase: "Aulas regulares",
-        period: "Abril a Outubro",
-        description: "Desenvolvimento técnico e expressivo com progressão pedagógica.",
+        phase: "Aulas contínuas e desenvolvimento técnico",
+        period: "Durante o ano letivo",
+        description:
+          "Condução das aulas de balé com progressão pedagógica, cuidado técnico e fortalecimento da expressão artística.",
       },
       {
-        phase: "Culminância",
-        period: "Novembro a Dezembro",
-        description: "Ensaios finais e apresentação de encerramento do ciclo.",
+        phase: "Consolidação e socialização",
+        period: "Encerramento do ciclo",
+        description:
+          "Registros, devolutivas e momentos de partilha do desenvolvimento artístico dos alunos.",
       },
     ],
   },
