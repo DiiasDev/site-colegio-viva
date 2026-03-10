@@ -141,7 +141,7 @@ export const pData: ProjectData[] = [
     status: "Em andamento",
     faixaEtaria: "Crianças, jovens e adultos",
     local: "Stúdio DH Dance - Cosmópolis/SP",
-    coordenacao: "Equipe do Stúdio DH Dance (profissionais qualificados, com destaque no balé)",
+    coordenacao: "Danielle Hamann",
     publico: "Alunos do Colégio Vivá e comunidade local",
     objetivo:
       "Ampliar o acesso à cultura e à formação artística por meio do balé, fortalecendo técnica, disciplina, expressão e desenvolvimento integral.",
